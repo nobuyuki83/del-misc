@@ -20,8 +20,8 @@ pub fn wdwddw_cst<T>(
 where T: num_traits::Float + 'static + Copy + std::ops::MulAssign + std::ops::AddAssign,
       f32: num_traits::AsPrimitive<T>
 {
-    use crate::geo_tri;
-    use crate::vec3;
+    use del_geo::tri;
+    use del_geo::vec3;
 
     let zero = 0_f32.as_();
     let one = 1_f32.as_();
@@ -33,7 +33,7 @@ where T: num_traits::Float + 'static + Copy + std::ops::MulAssign + std::ops::Ad
         [P[2][0] - P[0][0], P[2][1] - P[0][1], P[2][2] - P[0][2]],
         [zero, zero, zero]];
 
-    let Area: T = geo_tri::unit_normal3(&mut Gd[2], &P[0], &P[1], &P[2]);
+    let Area: T = tri::unit_normal3(&mut Gd[2], &P[0], &P[1], &P[2]);
 
     let mut Gu: [[T; 3]; 2] = [[zero; 3]; 2]; // inverse of Gd
     {
