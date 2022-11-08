@@ -1,7 +1,7 @@
 
 
 pub fn merge_trimesh3(
-    sparse: &mut del_ls::sparse::BlockSparseMatrix<f32>,
+    sparse: &mut del_ls::sparse_square::Matrix<f32>,
     merge_buffer: &mut Vec<usize>,
     tri2vtx: &[usize],
     vtx2xyz: &[f32]) {
