@@ -12,6 +12,7 @@ description = "misc utility codes for computer graphics research"
 [dependencies]
 nalgebra = "0.31.2"
 num-traits = "0.2.15"
+array-init = "2.0.1"
 del-geo = {path="../del-geo"}
 del-msh = {path="../del-msh"}
 del-ls = {path="../del-ls"}

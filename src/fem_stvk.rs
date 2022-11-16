@@ -23,8 +23,8 @@ where T: num_traits::Float + 'static + Copy + std::ops::MulAssign + std::ops::Ad
     use del_geo::tri;
     use del_geo::vec3;
 
-    let zero = 0_f32.as_();
-    let one = 1_f32.as_();
+    let zero = T::zero();
+    let one = T::one();
     let two = 2_f32.as_();
     let half = 0.5_f32.as_();
 
