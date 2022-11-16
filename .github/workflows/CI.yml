@@ -1,0 +1,51 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - main
+      - master
+  pull_request:
+
+jobs:
+  linux:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          repository: nobuyuki83/del-misc
+          path: del-misc
+
+      - name: Checkout dependent repos
+        uses: actions/checkout@v3
+        with:
+          repository: nobuyuki83/del-msh
+          path: del-msh
+
+      - name: Checkout dependent repos
+        uses: actions/checkout@v3
+        with:
+          repository: nobuyuki83/del-geo
+          path: del-geo
+
+      - name: Checkout dependent repos
+        uses: actions/checkout@v3
+        with:
+          repository: nobuyuki83/del-ls
+          path: del-ls
+
+      - name: Install Rust toolchain
+        uses: actions-rs/toolchain@v1
+        with:
+          toolchain: stable
+          profile: minimal
+          default: true
+
+      - name: Cargo commands
+        working-directory: del-misc
+        run: |
+          pwd
+          cargo build
+          cargo test
+          cargo doc
