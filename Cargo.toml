@@ -21,4 +21,4 @@ del-geo = "0.1.1"
 del-msh = "0.1.5"
 
 # del-ls = {path="../del-ls"}
-del-ls = "0.1.1"
+del-ls = "0.1.2"
