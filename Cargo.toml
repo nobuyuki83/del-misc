@@ -18,7 +18,7 @@ array-init = "2.0.1"
 del-geo = "0.1.0"
 
 # del-msh = {path="../del-msh"}
-del-msh = "0.1.4"
+del-msh = "0.1.5"
 
 # del-ls = {path="../del-ls"}
 del-ls = "0.1.1"
