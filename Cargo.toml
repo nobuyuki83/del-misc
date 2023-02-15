@@ -15,7 +15,7 @@ num-traits = "0.2.15"
 array-init = "2.0.1"
 
 # del-geo = {path="../del-geo"}
-del-geo = "0.1.0"
+del-geo = "0.1.1"
 
 # del-msh = {path="../del-msh"}
 del-msh = "0.1.5"
