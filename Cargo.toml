@@ -10,15 +10,15 @@ description = "misc utility codes for computer graphics research"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-nalgebra = "0.31.2"
+nalgebra = "*"
 num-traits = "0.2.15"
 array-init = "2.0.1"
 
-# del-geo = {path="../del-geo"}
-del-geo = "0.1.1"
+del-geo = {path="../del-geo"}
+# del-geo = "*"
 
-# del-msh = {path="../del-msh"}
-del-msh = "0.1.5"
+del-msh = {path="../del-msh"}
+# del-msh = "*"
 
-# del-ls = {path="../del-ls"}
-del-ls = "0.1.2"
+del-ls = {path="../del-ls"}
+# del-ls = "*"
