@@ -10,7 +10,7 @@ description = "misc utility codes for computer graphics research"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-nalgebra = "*"
+nalgebra = "0.32.2"
 num-traits = "0.2.15"
 array-init = "2.0.1"
 
