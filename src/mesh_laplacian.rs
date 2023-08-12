@@ -14,7 +14,7 @@ where
         let i0 = tri2vtx[it * 3 + 0];
         let i1 = tri2vtx[it * 3 + 1];
         let i2 = tri2vtx[it * 3 + 2];
-        let cots = del_geo::tri::cot3(
+        let cots = del_geo::tri3::cot_(
             &vtx2xyz[(i0 * 3 + 0)..(i0 * 3 + 3)],
             &vtx2xyz[(i1 * 3 + 0)..(i1 * 3 + 3)],
             &vtx2xyz[(i2 * 3 + 0)..(i2 * 3 + 3)]);

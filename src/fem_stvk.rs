@@ -20,7 +20,7 @@ pub fn wdwddw_cst<T>(
 where T: num_traits::Float + 'static + Copy + std::ops::MulAssign + std::ops::AddAssign,
       f32: num_traits::AsPrimitive<T>
 {
-    use del_geo::tri;
+    use del_geo::tri3;
     use del_geo::vec3;
 
     let zero = T::zero();
@@ -33,18 +33,18 @@ where T: num_traits::Float + 'static + Copy + std::ops::MulAssign + std::ops::Ad
         [P[2][0] - P[0][0], P[2][1] - P[0][1], P[2][2] - P[0][2]],
         [zero, zero, zero]];
 
-    let Area: T = tri::unit_normal3(&mut Gd[2], &P[0], &P[1], &P[2]);
+    let Area: T = tri3::unit_normal_(&mut Gd[2], &P[0], &P[1], &P[2]);
 
     let mut Gu: [[T; 3]; 2] = [[zero; 3]; 2]; // inverse of Gd
     {
-        vec3::cross_mut(&mut Gu[0], &Gd[1], &Gd[2]);
-        let invtmp1 = one / vec3::dot(&Gu[0], &Gd[0]);
+        vec3::cross_mut_(&mut Gu[0], &Gd[1], &Gd[2]);
+        let invtmp1 = one / vec3::dot_(&Gu[0], &Gd[0]);
         Gu[0][0] *= invtmp1;
         Gu[0][1] *= invtmp1;
         Gu[0][2] *= invtmp1;
         //
-        vec3::cross_mut(&mut Gu[1], &Gd[2], &Gd[0]);
-        let invtmp2 = one / vec3::dot(&Gu[1], &Gd[1]);
+        vec3::cross_mut_(&mut Gu[1], &Gd[2], &Gd[0]);
+        let invtmp2 = one / vec3::dot_(&Gu[1], &Gd[1]);
         Gu[1][0] *= invtmp2;
         Gu[1][1] *= invtmp2;
         Gu[1][2] *= invtmp2;
@@ -56,15 +56,15 @@ where T: num_traits::Float + 'static + Copy + std::ops::MulAssign + std::ops::Ad
     ];
 
     let E2: [T; 3] = [  // green lagrange strain (with engineer's notation)
-        half * (vec3::dot(&gd[0], &gd[0]) - vec3::dot(&Gd[0], &Gd[0])),
-        half * (vec3::dot(&gd[1], &gd[1]) - vec3::dot(&Gd[1], &Gd[1])),
-        one * (vec3::dot(&gd[0], &gd[1]) - vec3::dot(&Gd[0], &Gd[1]))
+        half * (vec3::dot_(&gd[0], &gd[0]) - vec3::dot_(&Gd[0], &Gd[0])),
+        half * (vec3::dot_(&gd[1], &gd[1]) - vec3::dot_(&Gd[1], &Gd[1])),
+        one * (vec3::dot_(&gd[0], &gd[1]) - vec3::dot_(&Gd[0], &Gd[1]))
     ];
 
     let GuGu2: [T; 3] = [
-        vec3::dot(&Gu[0], &Gu[0]),
-        vec3::dot(&Gu[1], &Gu[1]),
-        vec3::dot(&Gu[1], &Gu[0])];
+        vec3::dot_(&Gu[0], &Gu[0]),
+        vec3::dot_(&Gu[1], &Gu[1]),
+        vec3::dot_(&Gu[1], &Gu[0])];
 
     let cons2: [[T; 3]; 3] = [ // constitutive tensor
         [

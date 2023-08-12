@@ -5,13 +5,13 @@ pub fn intersection_meshtri3(
     ray_dir: &[f32],
     vtx2xyz: &[f32],
     tri2vtx: &[usize]) -> Option<([f32; 3], usize)> {
-    use del_geo::tri;
+    use del_geo::tri3;
     let mut hit_pos = Vec::<(f32, usize)>::new();
     for itri in 0..tri2vtx.len() / 3 {
         let i0 = tri2vtx[itri * 3 + 0];
         let i1 = tri2vtx[itri * 3 + 1];
         let i2 = tri2vtx[itri * 3 + 2];
-        let res = tri::ray_triangle_intersection(
+        let res = tri3::ray_triangle_intersection_(
             &ray_org, &ray_dir,
             &vtx2xyz[i0 * 3 + 0..i0 * 3 + 3],
             &vtx2xyz[i1 * 3 + 0..i1 * 3 + 3],
@@ -40,7 +40,7 @@ fn indexes_of_connected_triangle_in_sphere(
     vtx2xyz: &[f32],
     tri2vtx: &[usize],
     tri2adjtri: &[usize]) -> Vec<usize> {
-    use del_geo::{tri, vec3};
+    use del_geo::{tri3, vec3};
     let mut res = Vec::<usize>::new();
     let mut searched = std::collections::BTreeSet::<usize>::new();
     let mut next0 = Vec::<usize>::new();
@@ -52,12 +52,12 @@ fn indexes_of_connected_triangle_in_sphere(
             let i0 = tri2vtx[iel0 * 3 + 0];
             let i1 = tri2vtx[iel0 * 3 + 1];
             let i2 = tri2vtx[iel0 * 3 + 2];
-            let (pn, _r0, _r1) = tri::nearest_triangle3_point3(
+            let (pn, _r0, _r1) = tri3::nearest_to_point3_(
                 &pos,
                 &vtx2xyz[i0 * 3..i0 * 3 + 3],
                 &vtx2xyz[i1 * 3..i1 * 3 + 3],
                 &vtx2xyz[i2 * 3..i2 * 3 + 3]);
-            vec3::distance(&pn, &pos)
+            vec3::distance_(&pn, &pos)
         };
         if dist_min > rad { continue; }
         res.push(iel0);
@@ -96,7 +96,7 @@ pub fn is_there_point_on_mesh_inside_sphere(
             let pos_j = sampling::position_on_mesh_tri3(
                 smpl_j.0, smpl_j.1, smpl_j.2,
                 &vtx2xyz, &tri2vtx);
-            let dist = vec3::distance(&pos_i, &pos_j);
+            let dist = vec3::distance_(&pos_i, &pos_j);
             if dist < rad { return true; }
         }
     }

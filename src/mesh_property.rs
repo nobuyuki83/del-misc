@@ -8,7 +8,7 @@ pub fn area_par_vertex_in_triangles_mesh(
         let i0 = tri2vtx[i_tri * 3 + 0];
         let i1 = tri2vtx[i_tri * 3 + 1];
         let i2 = tri2vtx[i_tri * 3 + 2];
-        let a0 = del_geo::tri::area3(
+        let a0 = del_geo::tri3::area_(
             &vtx2xyz[i0 * 3..i0 * 3 + 3],
             &vtx2xyz[i1 * 3..i1 * 3 + 3],
             &vtx2xyz[i2 * 3..i2 * 3 + 3]) / 3_f32;
@@ -28,13 +28,13 @@ pub fn mean_edge_length_triangles_mesh(
         let i0 = tri2vtx[i_tri * 3 + 0];
         let i1 = tri2vtx[i_tri * 3 + 1];
         let i2 = tri2vtx[i_tri * 3 + 2];
-        sum += del_geo::vec3::distance(
+        sum += del_geo::vec3::distance_(
             &vtx2xyz[i0 * 3..i0 * 3 + 3],
             &vtx2xyz[i1 * 3..i1 * 3 + 3]);
-        sum += del_geo::vec3::distance(
+        sum += del_geo::vec3::distance_(
             &vtx2xyz[i1 * 3..i1 * 3 + 3],
             &vtx2xyz[i2 * 3..i2 * 3 + 3]);
-        sum += del_geo::vec3::distance(
+        sum += del_geo::vec3::distance_(
             &vtx2xyz[i2 * 3..i2 * 3 + 3],
             &vtx2xyz[i0 * 3..i0 * 3 + 3]);
     }
