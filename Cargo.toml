@@ -1,6 +1,6 @@
 [package]
 name = "del-misc"
-version = "0.1.3"
+version = "0.1.4"
 edition = "2021"
 authors = ["Nobuyuki Umetani <n.umetani@gmail.com>"]
 license = "MIT"
@@ -14,11 +14,11 @@ nalgebra = "0.32.3"
 num-traits = "0.2.15"
 array-init = "2.0.1"
 
-del-geo = {path="../del-geo"}
-#del-geo = "0.1.1"
+# del-geo = {path="../del-geo"}
+del-geo = "0.1.4"
 
-del-msh = {path="../del-msh"}
-# del-msh = "0.1.10"
+# del-msh = {path="../del-msh"}
+del-msh = "0.1.11"
 
-del-ls = {path="../del-ls"}
-# del-ls = "0.1.2"
+# del-ls = {path="../del-ls"}
+del-ls = "0.1.2"
